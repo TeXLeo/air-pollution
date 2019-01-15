@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+        var map;
+        var markers = [];
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat:22.418866, lng: 114.116442},
+                zoom: 11
+    });
+                
+        //建立地圖 marker 的集合
+        var marker_config = [{
+            position: {lat:22.285978, lng:114.191490},
+            map: map,
+            title:'Causeway Bay'
+        },{
+            position: {lat:22.28299, lng:114.15846},
+            map: map,
+            title:'Central'
+        },{
+            position: {lat:22.278872, lng:114.21188},
+            map: map,
+            title:'Eastern'
+        },{
+            position: {lat:22.373208, lng:114.138636},
+            map: map,
+            title:'Kwai Chung'
+        },{
+            position: {lat:22.3133, lng:114.226},
+            map: map,
+            title:'Kwun Tong'
+        },{
+            position: {lat:22.318636, lng:114.171165},
+            map: map,
+            title:'Mong Kok'
+        },{
+            position: {lat:22.3307, lng:114.162},
+            map: map,
+            title:'Sham Shui Po'
+        },{
+            position: {lat:22.383219, lng:114.1896},
+            map: map,
+            title:'Shatin'
+        },{
+            position: {lat:22.4508, lng:114.164},
+            map: map,
+            title:'Tai Po'
+        },{
+            position: {lat:22.470936, lng:114.3598},
+            map: map,
+            title:'Tap Mun'
+        },{
+            position: {lat:22.314495, lng:114.263954},
+            map: map,
+            title:'Tseung Kwan O'
+        },{
+            position: {lat:22.3628, lng:114.129},
+            map: map,
+            title:'Tsuen wan'
+        },{
+            position: {lat:22.3921, lng:113.97},
+            map: map,
+            title:'Tuen Mun'
+        },{
+            position: {lat:22.290678, lng:113.9443},
+            map: map,
+            title:'Tung Chung'
+        },{
+            position: {lat:22.4456, lng:114.022},
+            map: map,
+            title:'Yuen Long'}]
+            
+      //標出 marker
+      marker_config.forEach(function(e,i){
+        markers[i] = new google.maps.Marker(e);
+        markers[i].setMap(map);
+      }); 
+        function initMap(){
+            var markers = [];
+            var infoWindows = [];
+            var loaction;
+            var geocoder = new google.maps.Geocoder();
+            var info_config = [ 
+                '<h2>Causeway Bay</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Central</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Eastern</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Kwai Chung</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Kwun Tong</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Mong Kok</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Sham Shui Po</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Shatin</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Tai Po</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Tap Mun</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Tseung Kwan O</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Tsuen Wan</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Tuen Mun</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Tung Chung</h2>'+
+                '<span>這是總統府喔！</span><br/>',
+                '<h2>Yuen Long</h2>'+
+                '<span>這是總統府喔！</span><br/>'
+        ];            
+  //建立地圖 marker 的集合
+  var marker_config = [
+      {address: 'Causeway Bay'},
+      {address: 'Central'},
+      {address: 'Eastern'},
+      {address: 'Kwai Chung'},
+      {address: 'Kwun Tong'},
+      {address: 'Mong Kok'},
+      {address: 'Sham Shui Po'},
+      {address: 'Shatin'},
+      {address: 'Tai Po'},
+      {address: 'Tap Mun'},
+      {address: 'Tseung Kwan O'},
+      {address: 'Tsuen Wan'},
+      {address: 'Tuen Mun'},
+      {address: 'Tung Chung'},
+      {address: 'Yuen Long'}           
+  ];  
+
+  //geocoder主程式
+  function _geocoder(address, callback){
+    geocoder.geocode({
+      address: address
+    }, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        loaction = results[0].geometry.location;
+        callback(loaction); //用一個 callback 就不用每次多寫上面這段
+      }
+    });
+  }
+
+  //使用地址或名稱標出位置
+  _geocoder('Causeway Bay',function(address){
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: address,
+      zoom: 14
+    });
+
+    //設定資訊視窗內容
+    info_config.forEach(function(e,i){
+      infoWindows[i] = new google.maps.InfoWindow({
+        content: e
+      });
+    });
+
+    //標出 marker
+    marker_config.forEach(function(e,i){
+      _geocoder(e.address,function(address){
+        var marker = {
+          position:address,
+          map:map
+        }
+        markers[i] = new google.maps.Marker(marker);
+        markers[i].setMap(map);
+        markers[i].addListener('click', function() {
+          infoWindows[i].open(map, markers[i]);
+        });
+      });
+    });
+  });
+        
+        }
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7JOC3ncvfZ_zX4cg_CvyA4MmEsm0vtj8&callback=initMap"
+    async defer></script>
+  </body>
+</html>
