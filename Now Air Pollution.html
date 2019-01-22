@@ -29,67 +29,92 @@
                 zoom: 11
     });
                 
-        //建立地圖 marker 的集合
+        //建立地圖 marker 的集合red(7), green(1-3), grey(8-10), orange(4-6), purple(user location)
         var marker_config = [{
             position: {lat:22.285978, lng:114.191490},
             map: map,
-            title:'Causeway Bay'
+            title:'Causeway Bay',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png',
+            animation: google.maps.Animation.BOUNCE
         },{
             position: {lat:22.28299, lng:114.15846},
             map: map,
-            title:'Central'
+            title:'Central',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange6.png'
         },{
             position: {lat:22.278872, lng:114.21188},
             map: map,
-            title:'Eastern'
+            title:'Eastern',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png',
+            animation: google.maps.Animation.BOUNCE
         },{
             position: {lat:22.373208, lng:114.138636},
             map: map,
-            title:'Kwai Chung'
+            title:'Kwai Chung',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange4.png'
         },{
             position: {lat:22.3133, lng:114.226},
             map: map,
-            title:'Kwun Tong'
+            title:'Kwun Tong',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png',
+            animation: google.maps.Animation.BOUNCE
         },{
             position: {lat:22.318636, lng:114.171165},
             map: map,
-            title:'Mong Kok'
+            title:'Mong Kok',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png'
         },{
             position: {lat:22.3307, lng:114.162},
             map: map,
-            title:'Sham Shui Po'
+            title:'Sham Shui Po',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange4.png',
+            animation: google.maps.Animation.BOUNCE
         },{
             position: {lat:22.383219, lng:114.1896},
             map: map,
-            title:'Shatin'
+            title:'Shatin',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png'
         },{
             position: {lat:22.4508, lng:114.164},
             map: map,
-            title:'Tai Po'
+            title:'Tai Po',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png',
+            animation: google.maps.Animation.BOUNCE
         },{
             position: {lat:22.470936, lng:114.3598},
             map: map,
-            title:'Tap Mun'
+            title:'Tap Mun',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png'
         },{
             position: {lat:22.314495, lng:114.263954},
             map: map,
-            title:'Tseung Kwan O'
+            title:'Tseung Kwan O',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png'
         },{
             position: {lat:22.3628, lng:114.129},
             map: map,
-            title:'Tsuen wan'
+            title:'Tsuen wan',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png',
+            animation: google.maps.Animation.BOUNCE
         },{
             position: {lat:22.3921, lng:113.97},
             map: map,
-            title:'Tuen Mun'
+            title:'Tuen Mun',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png',
+            animation: google.maps.Animation.BOUNCE
         },{
             position: {lat:22.290678, lng:113.9443},
             map: map,
-            title:'Tung Chung'
+            title:'Tung Chung',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png',
+            animation: google.maps.Animation.BOUNCE
         },{
             position: {lat:22.4456, lng:114.022},
             map: map,
-            title:'Yuen Long'}]
+            title:'Yuen Long',
+            icon:'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange5.png',
+            animation: google.maps.Animation.BOUNCE
+        }]
             
       //標出 marker
       marker_config.forEach(function(e,i){
@@ -196,6 +221,7 @@
         
         }
       }
+        
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7JOC3ncvfZ_zX4cg_CvyA4MmEsm0vtj8&callback=initMap"
     async defer></script>
